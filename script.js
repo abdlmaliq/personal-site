@@ -1,8 +1,7 @@
 (() => {
   document.documentElement.classList.add("js");
-  const prefersReduced = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
+  // The site owner requested motion regardless of the operating-system preference.
+  const motionEnabled = true;
   const isTouch = window.matchMedia("(pointer: coarse)").matches;
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => [
@@ -16,8 +15,7 @@
     intro.style.opacity = "0";
     setTimeout(() => intro.remove(), 720);
   };
-  if (prefersReduced) finishIntro();
-  else setTimeout(finishIntro, 1150);
+  setTimeout(finishIntro, 1150);
 
   const header = $("[data-header]");
   const progress = $(".progress span");
@@ -58,7 +56,7 @@
   mobileLinks.forEach((link) => link.addEventListener("click", closeMenu));
 
   let lenis;
-  if (!prefersReduced && window.Lenis) {
+  if (motionEnabled && window.Lenis) {
     lenis = new Lenis({ duration: 1.12, smoothWheel: true, syncTouch: false });
     const raf = (time) => {
       lenis.raf(time);
@@ -78,7 +76,7 @@
   }
 
   const roles = $("[data-roles]");
-  if (roles && !prefersReduced) {
+  if (roles && motionEnabled) {
     const values = JSON.parse(roles.dataset.roles);
     let index = 0;
     let char = values[0].length;
@@ -106,7 +104,7 @@
 
   let projectTrigger = null;
 
-  if (!prefersReduced && window.gsap && window.ScrollTrigger) {
+  if (motionEnabled && window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
     gsap.to(".intro__line span", {
       x: "200%",
@@ -344,7 +342,7 @@
   };
   setupProjectNav();
 
-  if (!prefersReduced) {
+  if (motionEnabled) {
     const hero = $(".hero");
     hero?.addEventListener("pointermove", (e) => {
       const bounds = hero.getBoundingClientRect();
@@ -359,7 +357,7 @@
     });
   }
 
-  if (!isTouch && !prefersReduced) {
+  if (!isTouch && motionEnabled) {
     const cursor = $(".cursor");
     let mouseX = innerWidth / 2;
     let mouseY = innerHeight / 2;

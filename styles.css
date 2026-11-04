@@ -2063,43 +2063,6 @@ button {
     opacity: 0.25;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-  }
-  .intro {
-    display: none;
-  }
-  .reveal,
-  .char {
-    opacity: 1;
-    transform: none;
-  }
-  .cursor {
-    display: none;
-  }
-  .layer,
-  .hero-stage,
-  .hero-stage__portrait-wrap,
-  .contact__visual {
-    transform: none !important;
-  }
-  .service-card,
-  .badge,
-  .profile-card,
-  .quote {
-    transition: none;
-  }
-}
-
 /* Bright editorial mode: clear canvas, navy type, controlled signal color. */
 html {
   background: var(--bg);
@@ -2927,16 +2890,6 @@ img {
 .quotes {
   overflow: hidden;
 }
-@media (prefers-reduced-motion: reduce) {
-  .js .intro {
-    display: none;
-  }
-  .js .reveal,
-  .js .char {
-    opacity: 1;
-    transform: none;
-  }
-}
 @media (max-width: 900px) {
   .nav {
     display: flex;
@@ -3028,15 +2981,5 @@ img {
   }
   .hero__network svg path {
     animation-duration: 40s;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero::after {
-    display: none;
-  }
-  .service-card:hover,
-  .badge:hover {
-    translate: none;
-    scale: 1;
   }
 }

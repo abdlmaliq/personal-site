@@ -34,3 +34,5 @@ Vercel creates preview deployments for repository changes and a production deplo
 ## Notes
 
 The hero and contact visual use the supplied full-body cutout; the About profile card uses the transparent headshot crop. After the first Vercel deployment, add the assigned production URL as the canonical URL, Open Graph URL/image, and sitemap URL in `index.html`, `robots.txt`, and `sitemap.xml`. The production domain, AWS Credly URL, and project-specific imagery remain to be supplied.
+
+Animations intentionally run regardless of the visitor's operating-system reduced-motion preference, as requested.
