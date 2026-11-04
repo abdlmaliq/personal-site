@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /api/
 
-# Add the final production-domain sitemap URL when the domain is known.
+# Add a Sitemap: https://<production-domain>/sitemap.xml directive after deployment.

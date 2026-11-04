@@ -4,11 +4,12 @@ A static, single-page portfolio for Abdulmalik Afegbua, IT Support Specialist an
 
 ## Edit content
 
-- Update copy, links, certification URLs, and form text in `index.html`.
+- Update copy, links, and certification URLs in `index.html`.
 - Adjust the visual system in the `:root` variables at the top of `styles.css`.
 - The supplied portrait is already integrated: use `images/abdulmalik-fullbody.webp` for full-body compositions and `images/abdulmalik-headshot.webp` for profile/headshot compositions.
-- Replace the `hello@example.com` placeholder in the Contact section and `script.js` mailto fallback with your real email.
-- If you have a production domain, add its absolute URL to the canonical/OG tags and `sitemap.xml`.
+- Update the public contact address in the Contact section and Person schema in `index.html`.
+- The Contact section uses a direct `mailto:` link. It opens the visitor's email app; the site does not collect or submit messages.
+- When a production domain is available, add its absolute URL to the canonical and social metadata, `robots.txt`, and `sitemap.xml`.
 
 ## Preview locally
 
@@ -20,15 +21,16 @@ python3 -m http.server 3000
 
 Then open `http://localhost:3000`.
 
-## Netlify
+## GitHub and Vercel deployment
 
-This is a no-build static site. Drag the project folder into Netlify Drop, or connect the repository in Netlify with:
+This is a static site with no package manager, dependencies, or build step. To deploy it:
 
-- Build command: `true`
-- Publish directory: `.`
+1. Push the project files to a GitHub repository.
+2. In Vercel, choose **Add New → Project**, import the repository, and set the project root to the repository root.
+3. Keep the framework preset as **Other** and deploy. [`vercel.json`](./vercel.json) configures the no-op build, publishes the project root, and adds baseline security headers.
 
-The site loads GSAP, ScrollTrigger, and Lenis from CDNs for progressive enhancement. If a CDN is unavailable, the page remains readable and interactive with native browser behavior.
+Vercel creates preview deployments for repository changes and a production deployment for the configured production branch. No `package.json` or install command is required. The site loads GSAP, ScrollTrigger, and Lenis from CDNs for progressive enhancement. If JavaScript or a CDN is unavailable, the page remains visible and its native links and controls remain usable.
 
 ## Notes
 
-The hero and contact visual use the supplied full-body cutout; the About profile card uses the transparent headshot crop. The email address, production domain, AWS Credly URL, and project-specific imagery remain to be supplied.
+The hero and contact visual use the supplied full-body cutout; the About profile card uses the transparent headshot crop. After the first Vercel deployment, add the assigned production URL as the canonical URL, Open Graph URL/image, and sitemap URL in `index.html`, `robots.txt`, and `sitemap.xml`. The production domain, AWS Credly URL, and project-specific imagery remain to be supplied.

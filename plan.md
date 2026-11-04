@@ -4,10 +4,11 @@
 A single-route, static portfolio website for Abdulmalik Afegbua, built with semantic HTML, CSS, and vanilla JavaScript. The site is intentionally dependency-light: GSAP/ScrollTrigger and Lenis are loaded from public CDNs for motion, while the page remains readable and functional if those libraries are unavailable.
 
 ## Implementation approach
-- `index.html` contains the complete portfolio copy in the initial document so the page is crawlable without JavaScript.
+- `index.html` contains the complete portfolio copy in the initial document so the page is crawlable and readable without JavaScript. Motion-only hidden states are enabled only when the enhancement script runs.
 - `styles.css` owns the visual system: editable CSS variables, near-black navy surfaces, cyan/violet glows, editorial type hierarchy, glass panels, circuit/grid motifs, focus states, and responsive breakpoints.
 - `script.js` progressively enhances the page with intro reveal, Lenis smoothing, ScrollTrigger parallax, horizontal project rail pinning, count-up stats, typewriter roles, cursor trail, magnetic/tilt interactions, testimonial carousel controls, and active navigation state.
 - Motion is restricted to transforms and opacity where possible. `prefers-reduced-motion` disables scroll-linked motion and cursor effects; narrow viewports use fewer depth layers and native horizontal overflow.
+- Contact uses a direct `mailto:` link rather than a pretend form; the static site does not collect or submit messages.
 - Placeholder project visuals are CSS-generated, not fabricated personal photography. The `images/` folder is reserved for future avatar, project, and badge assets.
 - `public/manus-routes.json`, `robots.txt`, and `sitemap.xml` support the single public route. Canonical/OG URLs are left out until a real public domain is known rather than guessing an internal preview origin.
 
@@ -18,7 +19,7 @@ A single-route, static portfolio website for Abdulmalik Afegbua, built with sema
 - `public/manus-routes.json` — route manifest for the managed preview/publish pipeline.
 - `robots.txt` / `sitemap.xml` — crawler guidance; sitemap stays domain-neutral until a production domain is configured.
 - `images/README.md` — asset replacement notes and intended filenames.
-- `README.md` — editing and Netlify deployment instructions.
+- `README.md` — editing and GitHub-to-Vercel deployment instructions.
 - `TODO.md` — acceptance outcomes and remaining user-supplied values.
 
 ## Design direction

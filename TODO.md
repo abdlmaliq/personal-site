@@ -1,7 +1,7 @@
 # Build outcomes
 
 ## 1. Static foundation and SEO
-- [ ] The project is a complete single-page static site using plain HTML, CSS, and vanilla JavaScript and can deploy cleanly to Netlify.
+- [ ] The project is a complete single-page static site using plain HTML, CSS, and vanilla JavaScript and can deploy cleanly to Vercel from GitHub.
 - [ ] The initial HTML contains meaningful public body content, semantic sections, a title, meta description, Open Graph tags, Twitter card tags where useful, Person schema markup, and accessible navigation.
 - [ ] The site includes `public/manus-routes.json`, `robots.txt`, and `sitemap.xml`; absolute canonical and sitemap URLs remain unguessed until a real public domain is supplied.
 
@@ -25,10 +25,10 @@
 - [ ] Certifications include AWS, Google IT Support, Google Cybersecurity, Google AI Essentials, and ISC2; the supplied Credly links are preserved where provided.
 - [ ] Work includes GAIA Africa Club, TPA Studio marked “In progress”, and Nigerian Maritime Law Association with the supplied links and descriptions.
 - [ ] Testimonials include the supplied Automattic and GAIA Africa Club quotes in a draggable/keyboard-operable carousel.
-- [ ] Contact includes name/email/message fields, animated focus states, social links, a clear email placeholder, and the requested footer text.
+- [ ] Contact includes a working direct email link, social links, and the requested footer text.
 
 ## 5. Handoff and validation
-- [ ] `README.md` explains content editing, asset replacement, local preview, and Netlify deployment.
+- [ ] `README.md` explains content editing, asset replacement, local preview, and GitHub-to-Vercel deployment.
 - [ ] `images/README.md` documents simple filenames for future avatar, project, and badge assets.
 - [ ] Preview responds on port 3000, the route manifest returns valid JSON, diagnostics are registered, and the final code has no confirmed actionable issues.
-- [ ] Remaining assumptions/placeholders are listed for the user, especially the email address, production domain, favicon/logo asset, and supplied personal imagery.
+- [ ] Remaining assumptions/placeholders are listed for the user, especially the production domain, AWS Credly URL, and project-specific imagery.
