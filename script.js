@@ -122,31 +122,76 @@
       ease: "power4.out",
       delay: 0.78,
     });
-    gsap.utils.toArray(".reveal").forEach((el) =>
-      gsap.to(el, {
-        y: 0,
-        opacity: 1,
-        duration: 0.95,
-        ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 86%", once: true },
-      }),
+    gsap.utils
+      .toArray(".reveal:not(.service-card):not(.badge)")
+      .forEach((el) =>
+        gsap.to(el, {
+          y: 0,
+          opacity: 1,
+          duration: 0.95,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 86%", once: true },
+        }),
+      );
+    gsap.utils.toArray(".service-grid").forEach((grid) =>
+      gsap.fromTo(
+        $$(".service-card", grid),
+        { y: 72, rotateX: 8, opacity: 0, transformOrigin: "center bottom" },
+        {
+          y: 0,
+          rotateX: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: grid, start: "top 82%", once: true },
+        },
+      ),
     );
+    const badgeWall = $(".badge-wall");
+    if (badgeWall) {
+      gsap.fromTo(
+        $$(".badge", badgeWall),
+        {
+          y: 64,
+          scale: 0.82,
+          rotation: (index) => (index % 2 ? 15 : -16),
+          opacity: 0,
+        },
+        {
+          y: 0,
+          scale: 1,
+          rotation: (index) => [-9, 5, -3, 8, 11][index],
+          opacity: 1,
+          duration: 1,
+          stagger: 0.12,
+          ease: "back.out(1.35)",
+          scrollTrigger: {
+            trigger: badgeWall,
+            start: "top 82%",
+            once: true,
+          },
+        },
+      );
+    }
     gsap.utils.toArray(".layer").forEach((el) => {
       const speed = Number(el.dataset.speed || 0.2);
       gsap.to(el, {
-        yPercent: speed * -18,
+        yPercent: speed * -34,
+        xPercent: speed * 7,
         ease: "none",
         scrollTrigger: {
           trigger: el.closest(".section") || el,
           start: "top bottom",
           end: "bottom top",
-          scrub: true,
+          scrub: 1.25,
         },
       });
     });
     gsap.utils.toArray(".section-watermark").forEach((el, i) =>
       gsap.to(el, {
-        xPercent: i % 2 ? -9 : 9,
+        xPercent: i % 2 ? -17 : 17,
+        yPercent: i % 2 ? 6 : -6,
         ease: "none",
         scrollTrigger: {
           trigger: el.parentElement,
@@ -156,6 +201,24 @@
         },
       }),
     );
+    gsap.utils.toArray("[data-depth]").forEach((el) => {
+      const depth = Number(el.dataset.depth || 0.15);
+      gsap.fromTo(
+        el,
+        { yPercent: depth * 26, xPercent: depth * -10 },
+        {
+          yPercent: depth * -26,
+          xPercent: depth * 10,
+          ease: "none",
+          scrollTrigger: {
+            trigger: el.closest(".section") || el,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.4,
+          },
+        },
+      );
+    });
     gsap.utils
       .toArray(".hero-stage__data,.hero-stage__tag,.profile-scene__label")
       .forEach((el, i) =>
@@ -280,6 +343,21 @@
     syncFromScroll();
   };
   setupProjectNav();
+
+  if (!prefersReduced) {
+    const hero = $(".hero");
+    hero?.addEventListener("pointermove", (e) => {
+      const bounds = hero.getBoundingClientRect();
+      const x = ((e.clientX - bounds.left) / bounds.width) * 100;
+      const y = ((e.clientY - bounds.top) / bounds.height) * 100;
+      hero.style.setProperty("--pointer-x", `${x}%`);
+      hero.style.setProperty("--pointer-y", `${y}%`);
+    });
+    hero?.addEventListener("pointerleave", () => {
+      hero.style.setProperty("--pointer-x", "50%");
+      hero.style.setProperty("--pointer-y", "45%");
+    });
+  }
 
   if (!isTouch && !prefersReduced) {
     const cursor = $(".cursor");
